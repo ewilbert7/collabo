@@ -1,2 +1,2 @@
 # collabo
-Inventory Management System for ClovaCreate, developed by @ewilbert7
+Inventory Management System for ClovaCreate
