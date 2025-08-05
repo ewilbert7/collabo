@@ -4,6 +4,7 @@
 
 ## 🔧 Features (Planned / In Progress)
 - [ ] User authentication & role-based access
+- [x] Client management with add new client functionality
 - [ ] Inventory CRUD operations (Create, Read, Update, Delete)
 - [ ] Product categories and tagging
 - [ ] Real-time stock level tracking

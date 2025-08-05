@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { PlusCircle, Search, ArrowUpDown } from 'lucide-react';
 import { mockClientData } from '../data/mockData';
 import ClientCard from '../components/clients/ClientCard';
+import AddClientModal from '../components/clients/AddClientModal';
+import { ClientType } from '../types';
+import { generateId } from '../utils/idGenerator';
 
 const Clients: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
   const [sortBy, setSortBy] = useState('name');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clients, setClients] = useState<ClientType[]>(mockClientData);
 
   // Filter and sort clients
-  const filteredClients = mockClientData.filter(client => 
+  const filteredClients = clients.filter(client => 
     client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     client.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
     client.email.toLowerCase().includes(searchQuery.toLowerCase())
@@ -40,11 +45,28 @@ const Clients: React.FC = () => {
     }
   };
 
+  const handleAddClient = (clientData: Omit<ClientType, 'id' | 'createdAt' | 'lastActivity'>) => {
+    const newClient: ClientType = {
+      ...clientData,
+      id: generateId(),
+      createdAt: new Date().toISOString(),
+      lastActivity: new Date().toISOString()
+    };
+    
+    setClients(prev => [...prev, newClient]);
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold text-gray-800">Client Management</h1>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center transition-colors">
+        <button 
+          onClick={openModal}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center transition-colors"
+        >
           <PlusCircle className="w-4 h-4 mr-2" />
           Add New Client
         </button>
@@ -192,6 +214,12 @@ const Clients: React.FC = () => {
           </div>
         )}
       </div>
+
+      <AddClientModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onAddClient={handleAddClient}
+      />
     </div>
   );
 };
