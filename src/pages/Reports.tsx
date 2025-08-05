@@ -29,7 +29,7 @@ const Reports: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h3 className="text-gray-500 text-sm mb-1">Total Revenue</h3>
-          <p className="text-3xl font-semibold text-gray-800">${totalRevenue.toFixed(2)}</p>
+          <p className="text-3xl font-semibold text-gray-800">₦{totalRevenue.toLocaleString()}</p>
           <div className="mt-2 text-sm text-green-600">
             +12.5% from last period
           </div>
@@ -171,14 +171,14 @@ const Reports: React.FC = () => {
                       <div className="text-sm text-gray-900">{items.length}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">${totalPurchase.toFixed(2)}</div>
+                      <div className="text-sm text-gray-900">₦{totalPurchase.toLocaleString()}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">${totalCurrent.toFixed(2)}</div>
+                      <div className="text-sm text-gray-900">₦{totalCurrent.toLocaleString()}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-red-600">
-                        -${depreciation.toFixed(2)} ({depreciationPercent.toFixed(1)}%)
+                        -₦{depreciation.toLocaleString()} ({depreciationPercent.toFixed(1)}%)
                       </div>
                     </td>
                   </tr>

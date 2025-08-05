@@ -63,7 +63,7 @@ const BookingListItem: React.FC<BookingListItemProps> = ({ booking }) => {
         
         <div className="p-4 flex md:flex-col items-center justify-between">
           <div className="text-sm text-gray-700">
-            ${booking.cost.toFixed(2)}
+            ₦{booking.cost.toLocaleString()}
           </div>
           <div className="flex md:mt-3 space-x-2">
             {booking.status === 'active' && (

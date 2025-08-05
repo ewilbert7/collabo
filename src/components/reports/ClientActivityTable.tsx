@@ -46,7 +46,7 @@ const ClientActivityTable: React.FC<ClientActivityTableProps> = ({ clients }) =>
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center text-sm font-medium text-gray-900">
                   <DollarSign className="w-4 h-4 mr-1 text-green-500" />
-                  {Math.floor(Math.random() * 10000) + 1000}
+                  ₦{(Math.floor(Math.random() * 15000000) + 1500000).toLocaleString()}
                 </div>
               </td>
             </tr>

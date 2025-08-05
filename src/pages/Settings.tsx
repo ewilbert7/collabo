@@ -117,13 +117,14 @@ const Settings: React.FC = () => {
                       id="currency"
                       name="currency"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                      defaultValue="USD"
+                      defaultValue="NGN"
                     >
                       <option value="USD">US Dollar ($)</option>
                       <option value="EUR">Euro (€)</option>
                       <option value="GBP">British Pound (£)</option>
                       <option value="CAD">Canadian Dollar (C$)</option>
                       <option value="AUD">Australian Dollar (A$)</option>
+                      <option value="NGN">Nigerian Naira (₦)</option>
                     </select>
                   </div>
                 </div>
